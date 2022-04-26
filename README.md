@@ -13,7 +13,7 @@
 
 - **Homepage**: 
 
-  ![](https://github.com/RainFZY/Cervical-Cancer-Risk-Analysis/blob/master/app/static/images/homepage.png)
+  ![](https://github.com/RainFZY/Cervical-Cancer-Risk-Analysis/tree/main/app/static/images/homepage.png)
 
 
 - **About**: 
