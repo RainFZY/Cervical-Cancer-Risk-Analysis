@@ -1,108 +1,68 @@
-# Universal Project Scaffold
-A scaffold for deploying dockerized flask applications.
+# CERVICAL CANCER RISK ANALYSIS
+## Background
 
-If you have any questions, feel free to open an issue on [Github](https://github.com/organization-x/omni/issues).
+*AI Camp - The Data Science Crash Course Project*
 
-### Video Guide
-[![Deploy a Web Project with Flask](https://img.youtube.com/vi/JUb-PpejA7w/0.jpg)](https://youtu.be/JUb-PpejA7w "Deploy a Web Project with Flask")
+- In this project, we applied techniques of Machine Learning and Data Science to identify behavioral patterns of Cervical Cancer, which put women at a greater risk. Feature importance will be leveraged to construct risk profiles, generation of such risk profiles will help healthcare institutions/doctors to identify at risk individuals who should receive immediate attention and a more tailored health plan.
+- Coding Language: Python for ML/DS, Flask; Javascript/HTML/CSS for bootstrap.
+- ML Models: Logistic Regression, Random Forest, XGBoost, AdaBoost.
+- Dataset: [Cervical Cancer Data](https://www.openml.org/search?type=data&sort=runs&id=42912&status=active)
 
-This guide covers how you can quickly deploy most projects with the [Flask](https://flask.palletsprojects.com/) framework and our omni scaffold.
 
-### Quickstart Guide for Local Development
+## Contents of the Page
 
-cd into the `/app` folder
+- **Homepage**: 
 
-`python3 -m pip install -r requirements.txt`
+  ![](https://github.com/RainFZY/Cervical-Cancer-Risk-Analysis/blob/master/app/static/images/homepage.png)
 
-edit line 29 the `main.py` file to either the URL of the cocalc server you are on or `localhost` if you are running it on your own PC
 
-run
- 
- `python3 -m main`
+- **About**: 
+- **Exploration**
+- **Model**
+- **Conclusion**
+- **Contact**
 
-to start the server on local, most changes while developing will be picked up in realtime by the server
+## Quick Start
+**Dependencies**: 
 
-### Quickstart Guide for Local Deployment
+MapBox API
 
-Make sure docker is installed on your system. Look that up if you don't know what that means.
+**Functions**: 
 
-cd into the root director of the repo then run 
+1）Add Singapore's region dividing line, fill each region with color based on the number of its confirmed cases. The darker the color, the more severe the epidemic situation.
 
-`docker build -t omni .`
+2）Place a scrollbar at the top-left corner to check the epidemic information from a week ago to two weeks later by scrolling the bar.
 
-once built, run
+3）Click a certain region to view the number of its confirmed cases, suspected cases as well as the estimated outbreak time. Also the total number of cases (for the past week) and the estimated level of risk (for the following two weeks) are provided.
 
-`docker run -d -p 9000:80 --restart=unless-stopped --name omni omni`
+4）Click a certain region to view its most related three regions, which are connected with lines. The darker the color of the line, the higher the correlation coefficient. 
 
-you should then be able to see the `omni` container running when you run 
+5）The info box at the top-right corner shows the date, total population and the summary of the epidemic situation. The information change synchronously with the scrollbar.
 
-`docker ps -a`
+![](https://github.com/RainFZY/nCov-2020-SG/blob/master/images/demo2_1.png)
 
-if it seems to be stuck (i.e. constantly listed as `Restarting`), something is wrong with the docker image or code inside causing it to repeatedly fail.
+![](https://github.com/RainFZY/nCov-2020-SG/blob/master/images/demo2_2.png)
 
-you can start debugging the project by running 
+![](https://github.com/RainFZY/nCov-2020-SG/blob/master/images/demo2.gif)
 
-`docker logs -f omni` 
 
-or
 
-`docker exec -it omni /bin/bash` for an interactive bash terminal (this option only works if the container is running and not stuck in a restart loop)
 
-### Common Issues
+## Demo3
+**Dependencies**: 
 
-`$'\r': command not found` when attempting to start docker container
+MapBox API
 
-this is caused by the the `entrypoint.sh` script somehow having CLRF line endings instead of LF line endings.
+**Functions**: 
 
-to fix this run
+1）Locate every confirmed case on the map and make thermodynamic diagrams based on the density of confirmed cases.
 
-`sed -i 's/\r$//' entrypoint.sh`
+2）Add Singapore's region dividing line, click a certain region to view the number of its confirmed cases.
 
-### File Structure
-The files/directories which you will need to edit are **bolded**
+3）Place a scrollbar at the top-left corner to check the epidemic information from a week ago to two weeks later by scrolling the bar.
 
-**DO NOT TOUCH OTHER FILES. THIS MAY RESULT IN YOUR PROJECT BEING UNABLE TO RUN**
+4）The info box at the top-right corner shows the date, total population and the summary of the epidemic situation. The information change synchronously with the scrollbar.
 
-- .gitignore
-- config.py
-- Dockerfile
-- READMD.md
-- entrypoint.sh
-- nginx_host
-- host_config
-- app/
-     - **main.py**
-     - **requirements.txt**
-     - **utils.py**
-     - templates/
-          - **index.html**
-     - static/
-          - css/
-               - **styles.css**
-          - images/
-               - **GDP_correlation_map.png**
-          - js/
-               - **scripts.js**
-### main.py ###
-Contains the main flask app itself.
-### requirements.txt ###
-Contains list of packages and modules required to run the flask app. Edit only if you are using additional packages that need to be pip installed in order to run the project.
+![](https://github.com/RainFZY/nCov-2020-SG/blob/master/images/demo3.png)
 
-To generate a requirements.txt file you can run
-
-`pip list --format=freeze > app/requirements.txt`
-
-the requirements.txt file will then be updated. Keep in mind: some packages you install on one operating system may not be available on another. You will have to debug and resolve this yourself if this is the case.
-### static/ ###
-Contains the static images, CSS, & JS files used by the flask app for the webpage. You will need to create this and put files in it. Place all your images used for your website in static/images/ so that you can then reference them in your html files. You can also place your css files in this folder, to reference them like static/css/styles.css
-### utils.py ###
-Contains common functions used by the flask app. Put things here that are used more than once in the flask app.
-### templates/ ###
-Contains the HTML pages used for the webpage. Edit these to fit your project. index.html is the demo page. Optionally, you can add another team.html page or include a team section in index.html. 
-### Files used for deployment ###
-`config.py`
-`Dockerfile`
-`entrypoint.sh`
-`nginx_host`
-`host_config`
-**Only modify `host_config`. Do not touch the other files.**
+![](https://github.com/RainFZY/nCov-2020-SG/blob/master/images/demo3.gif)
